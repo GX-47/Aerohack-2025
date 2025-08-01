@@ -1,0 +1,14 @@
+# Rubik's Cube Solver - Python Dependencies
+# 
+# This file lists all required Python packages for the Rubik's Cube Solver application.
+# Install all dependencies using: pip install -r requirements.txt
+#
+# Core Dependencies:
+# - Flask: Web framework for the browser-based interface
+# - NumPy: Mathematical operations and array handling
+
+# Numerical computing and array operations
+numpy>=1.21.0
+
+# Web framework for browser interface
+flask>=2.0.0

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube Solver - Solution by Akash Anand</title>
+    <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik’s Cube</title>
+    <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Rubik’s Cube</h1>
+        <p style="font-size: 18px;">Solution by Akash Anand - Submission for Aerohack '25</p>
+    </div>
+    
+    <div class="container">
+        <div class="cube-display">
+            <h3>3D visualization</h3>
+            <div id="cube-canvas">
+                <div style="padding: 20px; text-align: center; color: #666;">
+                    Loading 3D visualization...
+                </div>
+            </div>
+            <div class="cube-controls" style="margin-top: 10px; text-align: center;">
+                <small style="color: #666; font-size: 18px;">
+                    Left click + drag to rotate | Scroll to zoom
+                </small>
+            </div>
+            
+            <!-- Step-by-step controls -->
+            <div id="step-controls" class="step-controls">
+                <div class="step-info" id="step-info">Step mode not active</div>
+                <div style="font-size: 12px; color: #666; margin: 5px 0;" id="step-help-text">
+                    Click "Next →" to apply the move shown above
+                </div>
+                <button id="prev-button" onclick="prevStep()">← Previous</button>
+                <button id="next-button" onclick="nextStep()">Next →</button>
+                <button onclick="stopStepSolve()">Exit Step Mode</button>
+            </div>
+            
+            <!-- Keep the old 2D display hidden but functional for debugging -->
+            <div id="cube-visual" style="display: none;">
+                <div class="cube-face" id="face-up">
+                    <h4>Up (U)</h4>
+                    <div id="face-U"></div>
+                </div>
+                <br>
+                <div class="cube-face" id="face-left">
+                    <h4>Left (L)</h4>
+                    <div id="face-L"></div>
+                </div>
+                <div class="cube-face" id="face-front">
+                    <h4>Front (F)</h4>
+                    <div id="face-F"></div>
+                </div>
+                <div class="cube-face" id="face-right">
+                    <h4>Right (R)</h4>
+                    <div id="face-R"></div>
+                </div>
+                <div class="cube-face" id="face-back">
+                    <h4>Back (B)</h4>
+                    <div id="face-B"></div>
+                </div>
+                <br>
+                <div class="cube-face" id="face-down">
+                    <h4>Down (D)</h4>
+                    <div id="face-D"></div>
+                </div>
+            </div>
+            
+            <div id="status" class="status" style="display: none;"></div>
+            
+            <div id="solution-container" style="display: none;">
+                <h4>Solution</h4>
+                <div id="solution-display" class="solution-display"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <h3>Controls</h3>
+            
+            <!-- Main control buttons -->
+            <div class="main-controls">
+                <button class="btn-scramble" onclick="scrambleCube()">Random Scramble</button>
+                <button class="btn-solve" onclick="solveCube()">Solve</button>
+                <button class="btn-step" id="step-button" onclick="toggleStepSolve()">Solve Stepwise</button>
+                <button class="btn-reset" onclick="resetCube()">Reset</button>
+            </div>
+            
+            <!-- Auto-solve speed control -->
+            <div class="control-group" style="margin: 10px 0;">
+                <label for="speed-control" style="font-size: 14px; color: #333;">Auto-Solve Speed:</label>
+                <select id="speed-control" onchange="setAutoSolveSpeed()" style="margin-left: 10px; padding: 5px;">
+                    <option value="2000">Slow (2s per move)</option>
+                    <option value="1000" selected>Normal (1s per move)</option>
+                    <option value="500">Fast (0.5s per move)</option>
+                    <option value="250">Very Fast (0.25s per move)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <h4>Custom Scramble</h4>
+                <input type="text" id="scramble-input" class="scramble-input" 
+                       placeholder="Enter or paste scramble (e.g., R U' F2 D)" 
+                       autocomplete="off" spellcheck="false">
+                <button class="btn-apply" onclick="applyCustomScramble()">Apply Scramble</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript modules -->
+    <script src="cube3d.js"></script>
+    <script src="cubeapi.js"></script>
+    <script src="controls.js"></script>
+</body>
+</html>
