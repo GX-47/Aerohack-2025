@@ -140,11 +140,11 @@ def _adjacent_face_swap(self, face: str):
 #### 3. **Solution Statistics**
 ```
 Step-by-step move counting:
-├── Cross: ~12 moves average
-├── First Layer: ~15 moves average  
-├── Middle Layer: ~25 moves average
-└── Last Layer: ~20 moves average
-Total: ~72 moves average (competitive range)
+├── Cross: ~20-25 moves average
+├── First Layer: ~25-30 moves average  
+├── Middle Layer: ~30-35 moves average
+└── Last Layer: ~35-40 moves average (EOLL + OCLL + CPLL + EPLL)
+Total: ~110-130 moves average
 ```
 
 ## 🎨 Creative Design Features
